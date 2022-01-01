@@ -21,5 +21,6 @@ app.listen(process.env.PORT);
 app.use(cors());
 app.use(bodyParser.json( { extended: true } ));
 app.use(bodyParser.urlencoded( { extended: true } ));
+
 app.use("/hostelApplicants", hostelApplications);
 

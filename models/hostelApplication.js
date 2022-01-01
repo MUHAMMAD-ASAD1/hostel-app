@@ -2,7 +2,10 @@ import mongoose from 'mongoose';
 
 const hostelApplicationStructure = mongoose.Schema({
     studentName: String,
-    registrationNumber: String
+    registrationNumber: String,
+    studentGender: String,
+    preferedHostel: String,
+    imageUrl: String
 });
 
 const hostelApplicationModel = mongoose.model('hostelApplication',hostelApplicationStructure);

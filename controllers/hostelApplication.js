@@ -27,9 +27,21 @@ export const createApplication = async (req, res) => {
     const registrationNumber = req.body.registrationNumber;
     const registrationNumberInString = registrationNumber.toString();
 
+    const studentGender = req.body.studentGender;
+    const studentGenderInStringFormat = studentGender.toString();
+
+    const preferedHostel = req.body.preferedHostel;
+    const preferedHostelInStringFormat = preferedHostel.toString();
+
+    const imageUrl = req.body.imageUrl;
+    const imageUrlInStringFormat = imageUrl.toString();
+
     const newApplicant = new hostelApplicationModel({
         studentName: studentNameInStringFormat,
-        registrationNumber: registrationNumberInString
+        registrationNumber: registrationNumberInString,
+        studentGender: studentGenderInStringFormat,
+        preferedHostel: preferedHostelInStringFormat,
+        imageUrl: imageUrlInStringFormat
     });
 
     try {
@@ -48,10 +60,22 @@ export const updateApplicationById = async (req, res) => {
     const registrationNumber = req.body.registrationNumber;
     const registrationNumberInString = registrationNumber.toString();
 
+    const studentGender = req.body.studentGender;
+    const studentGenderInStringFormat = studentGender.toString();
+
+    const preferedHostel = req.body.preferedHostel;
+    const preferedHostelInStringFormat = preferedHostel.toString();
+
+    const imageUrl = req.body.imageUrl;
+    const imageUrlInStringFormat = imageUrl.toString();
+
     try {
         const hostelApplications = await hostelApplicationModel.findById(req.params.id);
         hostelApplications.studentName = studentNameInStringFormat;
         hostelApplications.registrationNumber = registrationNumberInString;
+        hostelApplications.studentGender = studentGenderInStringFormat;
+        hostelApplications.preferedHostel = preferedHostelInStringFormat;
+        hostelApplications.imageUrl = imageUrlInStringFormat;
         await hostelApplications.save()
         res.json(hostelApplications);
     } catch (error) {
